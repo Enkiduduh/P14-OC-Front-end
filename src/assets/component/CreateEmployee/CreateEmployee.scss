@@ -1,0 +1,41 @@
+
+
+.title {
+  margin: 20px 0 50px 0;
+  display: flex;
+  justify-content: center;
+  background: rgba(5, 80, 137, 0.764);
+  color: white;
+}
+
+.wrapper-main {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // .wrapper-right{
+
+  // }
+  // .wrapper-left{
+
+  // }
+}
+
+.instructions {
+  display: flex;
+  flex-direction: column;
+  font-size: 18px;
+}
+
+.line-form {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.btn-save {
+  width: 120px;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 24px;
+}
