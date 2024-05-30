@@ -1,0 +1,35 @@
+.title {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $primary-color;
+  color: white;
+  text-align: center;
+
+  .title-left {
+    width: 30%;
+    text-align: center;
+    font-size: 24px;
+    font-family: $font-stack;
+  }
+  .title-right {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    font-family: $font-stack;
+    .btn-title{
+      padding: 10px;
+      border: 1px solid white;
+      width: 250px;
+      &:hover {
+        color:$secondary-color;
+        background: $primary-color;
+      }
+      a {
+        text-decoration: none;
+        color:$tertiary-color;
+      }
+    }
+  }
+}
