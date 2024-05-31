@@ -1,4 +1,24 @@
-.test {
-  height: 500px;
-  background: green;
+.viewEmployeePage-container {
+  width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  .showEntries-searchEntries {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .showEntries, .searchEntries {
+      margin: 10px 41px;
+    }
+  }
+  .td-head {
+    width: 100px;
+
+  }
+  td {
+    text-align: center;
+  }
 }

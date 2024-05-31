@@ -87,9 +87,28 @@ label {
   font-size: 20px;
 }
 
-.test {
-  height: 500px;
-  background: green;
+.viewEmployeePage-container {
+  width: 1000px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+}
+.viewEmployeePage-container .showEntries-searchEntries {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.viewEmployeePage-container .showEntries-searchEntries .showEntries, .viewEmployeePage-container .showEntries-searchEntries .searchEntries {
+  margin: 10px 41px;
+}
+.viewEmployeePage-container .td-head {
+  width: 100px;
+}
+.viewEmployeePage-container td {
+  text-align: center;
 }
 
 .title {
