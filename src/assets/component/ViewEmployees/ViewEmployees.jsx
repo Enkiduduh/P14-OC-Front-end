@@ -1,5 +1,7 @@
 import Header from "../../layout/header/Header";
 import Footer from "../../layout/footer/Footer";
+import tup from "../../img/triangle-up.svg";
+import tdown from "../../img/triangle-down.svg";
 
 function ViewEmployees() {
   return (
@@ -22,52 +24,103 @@ function ViewEmployees() {
             <input id="searchEntries-bar" name="searchEntries-bar"></input>
           </div>
         </div>
-
+        <div className="line"></div>
         <table className="table-container">
-          <thead>
+          <thead className="thead-line-flex">
             <tr>
-              <th className="td-head">First Name</th>
-              <th className="td-head">Last Name</th>
-              <th className="td-head">Start Date</th>
-              <th className="td-head">Department</th>
-              <th className="td-head">Date of Birth</th>
-              <th className="td-head">Street</th>
-              <th className="td-head">City</th>
-              <th className="td-head">State</th>
-              <th className="td-head">Zip Code</th>
+              <th className="th-flex">
+                <div className="td-head">First Name</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex">
+                <div className="td-head">Last Name</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex th-fixed-width">
+                <div className="td-head">Start Date</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex">
+                <div className="td-head">Department</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex th-fixed-width">
+                <div className="td-head">Date of Birth</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex">
+                <div className="td-head">Street</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex">
+                <div className="td-head">City</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex">
+                <div className="td-head">State</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
+              <th className="th-flex th-fixed-width">
+                <div className="td-head">Zip Code</div>
+                <div className="th-img-flex">
+                  <img className="img-triangle" src={tdown} alt="" />
+                  <img className="img-triangle" src={tup} alt="" />
+                </div>
+              </th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Tiger</td>
-              <td>Nixxon</td>
-              <td>2020-04-12</td>
-              <td>Marketing</td>
-              <td>1988-02-04</td>
-              <td>22 frederic jackal</td>
-              <td>Evermind</td>
-              <td>Grözher</td>
-              <td>45788 00</td>
+              <td className="td-width-fixed150">Tiger</td>
+              <td className="td-width-fixed150">Nixxon</td>
+              <td className="td-width-fixed100">2020-04-12</td>
+              <td className="td-width-fixed100">Marketing</td>
+              <td className="td-width-fixed100">1988-02-04</td>
+              <td className="td-width-fixed190">22 fred jackfrgeggdr</td>
+              <td className="td-width-fixed100">Evermind</td>
+              <td className="td-width-fixed100">Grözher</td>
+              <td className="td-width-fixed80">45788</td>
+            </tr>
 
-            </tr>
-            <tr>
-              <td>Garrett Winters</td>
-              <td>Accountant</td>
-              <td>Tokyo</td>
-              <td>63</td>
-              <td>2011/07/25</td>
-              <td>$170,750</td>
-            </tr>
-            <tr>
-              <td>Ashton Cox</td>
-              <td>Junior Technical Author</td>
-              <td>San Francisco</td>
-              <td>66</td>
-              <td>2009/01/12</td>
-              <td>$86,000</td>
-            </tr>
           </tbody>
         </table>
+        <div className="line"></div>
+        <div className="showEntryOnEntries-showPages">
+          <div className="showEntryOnEntries">
+            <div className="showEntry">
+              <span>Showing 1 to 1 of 1 entries </span>
+            </div>
+          </div>
+          <div className="showPages">
+            <label htmlFor="previous">Previous </label>
+            <button>1</button>
+            <label htmlFor="next"> Next</label>
+          </div>
+        </div>
       </div>
       <Footer />
     </>
