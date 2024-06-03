@@ -6,12 +6,12 @@ function Header() {
       </div>
       <div className="title-right">
         <h3 className="btn-title">
-          <a href="/createEmployee" target="blank">
+          <a href="/" target="blank">
             Create Employee Tool
           </a>
         </h3>
         <h3 className="btn-title">
-          <a href="/viewEmployees" target="blank">
+          <a href="/employees-list" target="blank">
             View Current Employees
           </a>
         </h3>

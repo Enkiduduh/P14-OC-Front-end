@@ -213,6 +213,10 @@ label {
   text-align: center;
 }
 
+.week1 td {
+  width: 20px;
+}
+
 #root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

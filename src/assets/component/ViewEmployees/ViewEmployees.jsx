@@ -1,5 +1,6 @@
 import Header from "../../layout/header/Header";
 import Footer from "../../layout/footer/Footer";
+import Calendar from "../../component/Calendar/Calendar";
 import tup from "../../img/triangle-up.svg";
 import tdown from "../../img/triangle-down.svg";
 
@@ -105,7 +106,6 @@ function ViewEmployees() {
               <td className="td-width-fixed100">Grözher</td>
               <td className="td-width-fixed80">45788</td>
             </tr>
-
           </tbody>
         </table>
         <div className="line"></div>
@@ -122,6 +122,13 @@ function ViewEmployees() {
           </div>
         </div>
       </div>
+
+      <div className="test">
+        <label htmlFor="date">Date:</label>
+        <input type="date" />
+      </div>
+
+      <Calendar />
       <Footer />
     </>
   );

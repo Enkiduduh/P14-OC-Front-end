@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Header from '../../layout/header/Header'
-import Footer from '../../layout/footer/Footer'
+import Header from "../../layout/header/Header";
+import Footer from "../../layout/footer/Footer";
 
 function CreateEmployee() {
   const [formData, setFormData] = useState({
@@ -10,7 +10,9 @@ function CreateEmployee() {
     startDate: "",
     street: "",
     city: "",
+    state: "",
     zipcode: "",
+    department: "",
   });
 
   const handleChange = (event) => {
@@ -23,8 +25,22 @@ function CreateEmployee() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Here you can handle the form submission, like sending the data to a server
-    console.log("Form data submitted:", formData);
+    if (
+      formData.firstName === "" ||
+      formData.lastName === "" ||
+      formData.dateOfBirth === "" ||
+      formData.startDate === "" ||
+      formData.department === "" ||
+      formData.street === "" ||
+      formData.city === "" ||
+      formData.state === "" ||
+      formData.zipcode === ""
+    ) {
+      console.log("Form data submitted: Every fields should be completed!");
+    } else {
+      // Here you can handle the form submission, like sending the data to a server
+      console.log("Form data submitted:", formData);
+    }
   };
 
   return (
@@ -68,7 +84,7 @@ function CreateEmployee() {
               <div className="line-form">
                 <label htmlFor="dateOfBirth">Date of Birth</label>
                 <input
-                  type="text"
+                  type="date"
                   id="dateOfBirth"
                   name="dateOfBirth"
                   value={formData.dateOfBirth}
@@ -78,7 +94,7 @@ function CreateEmployee() {
               <div className="line-form">
                 <label htmlFor="startDate">Start Date</label>
                 <input
-                  type="text"
+                  type="date"
                   id="startDate"
                   name="startDate"
                   value={formData.startDate}
@@ -161,7 +177,7 @@ function CreateEmployee() {
           </div>
         </form>
       </div>
-<Footer />
+      <Footer />
     </div>
   );
 }
