@@ -1,0 +1,22 @@
+.custom-date-picker {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 4px;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.custom-date-picker::-webkit-inner-spin-button,
+.custom-date-picker::-webkit-clear-button {
+  display: none;
+}
+
+.custom-date-picker::-webkit-calendar-picker-indicator {
+  color: #000;
+  opacity: 0.9;
+  cursor: pointer;
+}

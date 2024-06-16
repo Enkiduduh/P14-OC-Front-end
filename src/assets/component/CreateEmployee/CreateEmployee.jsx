@@ -1,8 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addEmployee } from "../../../store/employeesSlice";
 import Header from "../../layout/header/Header";
 import Footer from "../../layout/footer/Footer";
+import Date_picker from "../Date_Picker/Date_picker";
+import DatePicker from 'my-date-picker-package';
+// import 'my-date-picker-package/dist/style.css';
 
 function CreateEmployee() {
+  const dispatch = useDispatch();
+  // const [date, setDate] = useState("");
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,6 +23,7 @@ function CreateEmployee() {
     zipcode: "",
     department: "",
   });
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -22,6 +32,7 @@ function CreateEmployee() {
       [name]: value,
     });
   };
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -40,6 +51,19 @@ function CreateEmployee() {
     } else {
       // Here you can handle the form submission, like sending the data to a server
       console.log("Form data submitted:", formData);
+      dispatch(addEmployee(formData));
+      setFormData({
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        startDate: "",
+        street: "",
+        city: "",
+        state: "",
+        zipcode: "",
+        department: "",
+      });
+      navigate("/employees-list");
     }
   };
 
@@ -81,26 +105,25 @@ function CreateEmployee() {
                   onChange={handleChange}
                 />
               </div>
-              <div className="line-form">
-                <label htmlFor="dateOfBirth">Date of Birth</label>
-                <input
-                  type="date"
-                  id="dateOfBirth"
-                  name="dateOfBirth"
-                  value={formData.dateOfBirth}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="line-form">
-                <label htmlFor="startDate">Start Date</label>
-                <input
-                  type="date"
-                  id="startDate"
-                  name="startDate"
-                  value={formData.startDate}
-                  onChange={handleChange}
-                />
-              </div>
+              <Date_picker
+                id="dateOfBirth"
+                labelName="Date of Birth"
+                value={formData.dateOfBirth}
+                onChange={handleChange}
+              />
+              {/* <Date_picker
+                id="startDate"
+                labelName="Start Date"
+                value={formData.startDate}
+                onChange={handleChange}
+              /> */}
+
+              {/* <DatePicker
+                id="startDate"
+                labelName="Start Date"
+                value={formData.startDate}
+                onChange={handleChange}
+              /> */}
               <div className="line-form">
                 <label htmlFor="department">Department</label>
                 <select

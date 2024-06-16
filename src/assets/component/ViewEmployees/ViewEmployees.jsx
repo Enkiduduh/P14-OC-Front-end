@@ -1,10 +1,12 @@
+import { useSelector } from "react-redux";
 import Header from "../../layout/header/Header";
 import Footer from "../../layout/footer/Footer";
-import Calendar from "../../component/Calendar/Calendar";
 import tup from "../../img/triangle-up.svg";
 import tdown from "../../img/triangle-down.svg";
 
 function ViewEmployees() {
+  const employees = useSelector((state) => state.employees);
+
   return (
     <>
       <Header />
@@ -95,24 +97,26 @@ function ViewEmployees() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="td-width-fixed150">Tiger</td>
-              <td className="td-width-fixed150">Nixxon</td>
-              <td className="td-width-fixed100">2020-04-12</td>
-              <td className="td-width-fixed100">Marketing</td>
-              <td className="td-width-fixed100">1988-02-04</td>
-              <td className="td-width-fixed190">22 fred jackfrgeggdr</td>
-              <td className="td-width-fixed100">Evermind</td>
-              <td className="td-width-fixed100">Grözher</td>
-              <td className="td-width-fixed80">45788</td>
-            </tr>
+            {employees.map((employee, index) => (
+              <tr key={index}>
+                <td className="td-width-fixed150">{employee.firstName}</td>
+                <td className="td-width-fixed150">{employee.lastName}</td>
+                <td className="td-width-fixed100">{employee.startDate}</td>
+                <td className="td-width-fixed100">{employee.department}</td>
+                <td className="td-width-fixed100">{employee.dateOfBirth}</td>
+                <td className="td-width-fixed190">{employee.street}</td>
+                <td className="td-width-fixed100">{employee.city}</td>
+                <td className="td-width-fixed100"> {employee.state}</td>
+                <td className="td-width-fixed80">{employee.zipcode}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
         <div className="line"></div>
         <div className="showEntryOnEntries-showPages">
           <div className="showEntryOnEntries">
             <div className="showEntry">
-              <span>Showing 1 to 1 of 1 entries </span>
+              <span>Showing {employees.length} entries </span>
             </div>
           </div>
           <div className="showPages">
@@ -123,12 +127,6 @@ function ViewEmployees() {
         </div>
       </div>
 
-      <div className="test">
-        <label htmlFor="date">Date:</label>
-        <input type="date" />
-      </div>
-
-      <Calendar />
       <Footer />
     </>
   );
