@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 import Header from "../../layout/header/Header";
 import Footer from "../../layout/footer/Footer";
 import tup from "../../img/triangle-up.svg";
@@ -6,6 +7,15 @@ import tdown from "../../img/triangle-down.svg";
 
 function ViewEmployees() {
   const employees = useSelector((state) => state.employees);
+
+  const [employeeData, setEmployeeData] = useState([]);
+
+  useEffect(() => {
+    fetch('src/assets/data/data.json')
+      .then((response) => response.json())
+      .then((data) => setEmployeeData(data));
+      console.log(employeeData)
+  }, [employeeData]);
 
   return (
     <>
@@ -97,13 +107,26 @@ function ViewEmployees() {
             </tr>
           </thead>
           <tbody>
+            {employeeData.map((employee, index) => (
+              <tr key={index}>
+                <td className="td-width-fixed150">{employee.firstname}</td>
+                <td className="td-width-fixed150">{employee.lastname}</td>
+                <td className="td-width-fixed100">{employee.startdate}</td>
+                <td className="td-width-fixed100">{employee.department}</td>
+                <td className="td-width-fixed100">{employee.birthdate}</td>
+                <td className="td-width-fixed190">{employee.street}</td>
+                <td className="td-width-fixed100">{employee.city}</td>
+                <td className="td-width-fixed100"> {employee.state}</td>
+                <td className="td-width-fixed80">{employee.zipcode}</td>
+              </tr>
+            ))}
             {employees.map((employee, index) => (
               <tr key={index}>
                 <td className="td-width-fixed150">{employee.firstName}</td>
                 <td className="td-width-fixed150">{employee.lastName}</td>
                 <td className="td-width-fixed100">{employee.startDate}</td>
                 <td className="td-width-fixed100">{employee.department}</td>
-                <td className="td-width-fixed100">{employee.dateOfBirth}</td>
+                <td className="td-width-fixed100">{employee.birthDate}</td>
                 <td className="td-width-fixed190">{employee.street}</td>
                 <td className="td-width-fixed100">{employee.city}</td>
                 <td className="td-width-fixed100"> {employee.state}</td>
@@ -116,7 +139,7 @@ function ViewEmployees() {
         <div className="showEntryOnEntries-showPages">
           <div className="showEntryOnEntries">
             <div className="showEntry">
-              <span>Showing {employees.length} entries </span>
+              <span>Showing {employeeData.length + employees.length} entries </span>
             </div>
           </div>
           <div className="showPages">

@@ -5,8 +5,7 @@ import { addEmployee } from "../../../store/employeesSlice";
 import Header from "../../layout/header/Header";
 import Footer from "../../layout/footer/Footer";
 import Date_picker from "../Date_Picker/Date_picker";
-import DatePicker from 'my-date-picker-package';
-// import 'my-date-picker-package/dist/style.css';
+import DatePicker from "my-date-picker-package";
 
 function CreateEmployee() {
   const dispatch = useDispatch();
@@ -32,7 +31,6 @@ function CreateEmployee() {
       [name]: value,
     });
   };
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -111,19 +109,13 @@ function CreateEmployee() {
                 value={formData.dateOfBirth}
                 onChange={handleChange}
               />
-              {/* <Date_picker
+              <Date_picker
                 id="startDate"
                 labelName="Start Date"
                 value={formData.startDate}
                 onChange={handleChange}
-              /> */}
+              />
 
-              {/* <DatePicker
-                id="startDate"
-                labelName="Start Date"
-                value={formData.startDate}
-                onChange={handleChange}
-              /> */}
               <div className="line-form">
                 <label htmlFor="department">Department</label>
                 <select
@@ -173,10 +165,57 @@ function CreateEmployee() {
                       value={formData.state}
                       onChange={handleChange}
                     >
-                      <option value="volvo">Volvo</option>
-                      <option value="saab">Saab</option>
-                      <option value="fiat">Fiat</option>
-                      <option value="audi">Audi</option>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                      <option value="CT">Connecticut</option>
+                      <option value="DE">Delaware</option>
+                      <option value="DC">District Of Columbia</option>
+                      <option value="FL">Florida</option>
+                      <option value="GA">Georgia</option>
+                      <option value="HI">Hawaii</option>
+                      <option value="ID">Idaho</option>
+                      <option value="IL">Illinois</option>
+                      <option value="IN">Indiana</option>
+                      <option value="IA">Iowa</option>
+                      <option value="KS">Kansas</option>
+                      <option value="KY">Kentucky</option>
+                      <option value="LA">Louisiana</option>
+                      <option value="ME">Maine</option>
+                      <option value="MD">Maryland</option>
+                      <option value="MA">Massachusetts</option>
+                      <option value="MI">Michigan</option>
+                      <option value="MN">Minnesota</option>
+                      <option value="MS">Mississippi</option>
+                      <option value="MO">Missouri</option>
+                      <option value="MT">Montana</option>
+                      <option value="NE">Nebraska</option>
+                      <option value="NV">Nevada</option>
+                      <option value="NH">New Hampshire</option>
+                      <option value="NJ">New Jersey</option>
+                      <option value="NM">New Mexico</option>
+                      <option value="NY">New York</option>
+                      <option value="NC">North Carolina</option>
+                      <option value="ND">North Dakota</option>
+                      <option value="OH">Ohio</option>
+                      <option value="OK">Oklahoma</option>
+                      <option value="OR">Oregon</option>
+                      <option value="PA">Pennsylvania</option>
+                      <option value="RI">Rhode Island</option>
+                      <option value="SC">South Carolina</option>
+                      <option value="SD">South Dakota</option>
+                      <option value="TN">Tennessee</option>
+                      <option value="TX">Texas</option>
+                      <option value="UT">Utah</option>
+                      <option value="VT">Vermont</option>
+                      <option value="VA">Virginia</option>
+                      <option value="WA">Washington</option>
+                      <option value="WV">West Virginia</option>
+                      <option value="WI">Wisconsin</option>
+                      <option value="WY">Wyoming</option>
                     </select>
                   </div>
                   <div className="line-form">
