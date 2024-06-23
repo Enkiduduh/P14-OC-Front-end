@@ -10,11 +10,16 @@ function ViewEmployees() {
 
   const [employeeData, setEmployeeData] = useState([]);
 
+
+  function formatDateToDDMMYYYY(date) {
+    const [year, month, day] = date.split("-");
+    return `${day}/${month}/${year}`;
+  }
+
   useEffect(() => {
     fetch('src/assets/data/data.json')
       .then((response) => response.json())
       .then((data) => setEmployeeData(data));
-      console.log(employeeData)
   }, [employeeData]);
 
   return (
@@ -124,9 +129,9 @@ function ViewEmployees() {
               <tr key={index}>
                 <td className="td-width-fixed150">{employee.firstName}</td>
                 <td className="td-width-fixed150">{employee.lastName}</td>
-                <td className="td-width-fixed100">{employee.startDate}</td>
+                <td className="td-width-fixed100">{formatDateToDDMMYYYY(employee.startDate)}</td>
                 <td className="td-width-fixed100">{employee.department}</td>
-                <td className="td-width-fixed100">{employee.birthDate}</td>
+                <td className="td-width-fixed100">{formatDateToDDMMYYYY(employee.dateOfBirth)}</td>
                 <td className="td-width-fixed190">{employee.street}</td>
                 <td className="td-width-fixed100">{employee.city}</td>
                 <td className="td-width-fixed100"> {employee.state}</td>

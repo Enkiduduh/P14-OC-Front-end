@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 
 function Date_picker({ id, labelName, value, onChange }) {
-
-
   return (
     <div className="line-form">
       <label htmlFor={id}>{labelName}</label>
