@@ -269,19 +269,6 @@ function ViewEmployees() {
             </tr>
           </thead>
           <tbody>
-            {/* {employeeData.map((employee, index) => (
-              <tr key={index}>
-                <td className="td-width-fixed150">{employee.firstname}</td>
-                <td className="td-width-fixed150">{employee.lastname}</td>
-                <td className="td-width-fixed100">{employee.startdate}</td>
-                <td className="td-width-fixed100">{employee.department}</td>
-                <td className="td-width-fixed100">{employee.birthdate}</td>
-                <td className="td-width-fixed190">{employee.street}</td>
-                <td className="td-width-fixed100">{employee.city}</td>
-                <td className="td-width-fixed100"> {employee.state}</td>
-                <td className="td-width-fixed80">{employee.zipcode}</td>
-              </tr>
-            ))} */}
             {filteredEmployees.map((employee, index) => (
               <tr key={index}>
                 <td className="td-width-fixed150">{employee.firstName}</td>

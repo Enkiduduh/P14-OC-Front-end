@@ -1,3 +1,7 @@
+.container-cet {
+  position: relative;
+}
+
 .wrapper-main {
   position: relative;
   display: flex;
@@ -90,8 +94,15 @@ label {
 
 .modalDisplay {
   position: absolute;
-  top: 40%;
-  left: 30%;
+  width: 100vw;
+  height: 100vh;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0.9;
+  pointer-events: none;
 }
 
 .viewEmployeePage-container {
@@ -254,8 +265,10 @@ label {
   height: 200px;
   border: 2px solid black;
   font-family: "Roboto", sans-serif;
+  background: rgb(168, 168, 168);
 }
-.modal-container .modal-ok, .modal-container .modal-nok {
+.modal-container .modal-ok,
+.modal-container .modal-nok {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -285,6 +298,7 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+  pointer-events: fill;
 }
 
 .closed {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../../../store/employeesSlice";
@@ -8,7 +8,8 @@ import Date_picker from "../Date_Picker/Date_picker";
 import DatePicker from "my-date-picker-package";
 import { optionsDepartment, optionsState } from "../Select/options";
 import SelectComponent from "../Select/Select";
-import Modal from "../Modal/Modal";
+// import Modal from "../Modal/Modal";
+import ModalTest from "@enkiduh/package_modal"
 
 function CreateEmployee() {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function CreateEmployee() {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [isClickedToClose, setIsClickedToClose] = useState(false);
   const [isFormCompleted, setIsFormCompleted] = useState(false);
+  const [isValueLabel2Exists, setIsValueLabel2Exists] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -40,6 +42,9 @@ function CreateEmployee() {
       [name]: value,
     });
   };
+  useEffect(() => {
+    setIsValueLabel2Exists(true);
+  });
 
   const handleCloseModal = () => {
     setIsClickedToClose(true);
@@ -47,7 +52,6 @@ function CreateEmployee() {
     if (isFormCompleted && isFormSubmitted) {
       navigate("/employees-list");
     }
-
   };
 
   const handleChangeSelectDep = (event) => {
@@ -88,7 +92,7 @@ function CreateEmployee() {
       );
       setTimeout(() => {
         setIsFormSubmitted(false);
-        setIsClickedToClose(false)
+        setIsClickedToClose(false);
       }, 5000);
     } else {
       setIsFormSubmitted(true);
@@ -110,139 +114,156 @@ function CreateEmployee() {
   };
 
   return (
-    <div className="container-cet">
-      <Header />
-      <div className="wrapper-main">
-        <div className="wrapper-right">
-          <div className="instructions">
-            <span>Instructions :</span>
-            <span>Fill the form to add an Employee to the HRnet Database.</span>
-            <span>
-              Please remind that all fields need to be completed to validate the
-              form.
-            </span>
-          </div>
-        </div>
-        <form onSubmit={handleSubmit} className="wrapper-left">
-          <div className="info-container">
-            <div className="info-employee">
-              <span>Identity</span>
-              <div className="line-form">
-                <label htmlFor="firstName">First Name</label>
-                <input
-                  type="text"
-                  id="firstName"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="line-form">
-                <label htmlFor="lastName">Last Name</label>
-                <input
-                  type="text"
-                  id="lastName"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                />
-              </div>
-              <Date_picker
-                id="dateOfBirth"
-                labelName="Date of Birth"
-                value={formData.dateOfBirth}
-                onChange={handleChange}
-              />
-              <Date_picker
-                id="startDate"
-                labelName="Start Date"
-                value={formData.startDate}
-                onChange={handleChange}
-              />
+    <>
+      <div className="container-cet">
 
-              {/* <DatePicker
+        <Header />
+        <div className="wrapper-main">
+          <div className="wrapper-right">
+            <div className="instructions">
+              <span>Instructions :</span>
+              <span>
+                Fill the form to add an Employee to the HRnet Database.
+              </span>
+              <span>
+                Please remind that all fields need to be completed to validate
+                the form.
+              </span>
+            </div>
+          </div>
+          <form onSubmit={handleSubmit} className="wrapper-left">
+            <div className="info-container">
+              <div className="info-employee">
+                <span>Identity</span>
+                <div className="line-form">
+                  <label htmlFor="firstName">First Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="line-form">
+                  <label htmlFor="lastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleChange}
+                  />
+                </div>
+                <Date_picker
+                  id="dateOfBirth"
+                  labelName="Date of Birth"
+                  value={formData.dateOfBirth}
+                  onChange={handleChange}
+                />
+                <Date_picker
+                  id="startDate"
+                  labelName="Start Date"
+                  value={formData.startDate}
+                  onChange={handleChange}
+                />
+
+                {/* <DatePicker
                 id="startDate"
                 labelName="Start Date"
                 value={formData.startDate}
                 onChange={handleChange}
               /> */}
-              <div className="line-form">
-                <SelectComponent
-                  options={optionsDepartment}
-                  value={selectedValueDepartment}
-                  onChange={handleChangeSelectDep}
-                  htmlFor="department"
-                  labelValue="Department"
-                />
+                <div className="line-form">
+                  <SelectComponent
+                    options={optionsDepartment}
+                    value={selectedValueDepartment}
+                    onChange={handleChangeSelectDep}
+                    htmlFor="department"
+                    labelValue="Department"
+                    labelValue2={null}
+                    isValueLabel2Exists={isValueLabel2Exists}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="info-adress">
-              <div className="adress-container">
-                <div className="adress">
-                  <span>Adress</span>
-                  <div className="line-form">
-                    <label htmlFor="street">Street</label>
-                    <input
-                      type="text"
-                      id="street"
-                      name="street"
-                      value={formData.street}
-                      onChange={handleChange}
-                    />
+              <div className="info-adress">
+                <div className="adress-container">
+                  <div className="adress">
+                    <span>Adress</span>
+                    <div className="line-form">
+                      <label htmlFor="street">Street</label>
+                      <input
+                        type="text"
+                        id="street"
+                        name="street"
+                        value={formData.street}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="line-form">
+                      <label htmlFor="city">City</label>
+                      <input
+                        type="text"
+                        id="city"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                      />
+                    </div>
+                    <div className="line-form">
+                      <SelectComponent
+                        options={optionsState}
+                        value={selectedValueState}
+                        onChange={handleChangeSelectSta}
+                        htmlFor="state"
+                        labelValue="State"
+                        labelValue2={null}
+                        isValueLabel2Exists={isValueLabel2Exists}
+                      />
+                    </div>
+                    <div className="line-form">
+                      <label htmlFor="zipcode">Zipcode</label>
+                      <input
+                        type="number"
+                        id="zipcode"
+                        name="zipcode"
+                        value={formData.zipcode}
+                        onChange={handleChange}
+                      />
+                    </div>
                   </div>
-                  <div className="line-form">
-                    <label htmlFor="city">City</label>
-                    <input
-                      type="text"
-                      id="city"
-                      name="city"
-                      value={formData.city}
-                      onChange={handleChange}
-                    />
+                  <div className="info-department-btn-save">
+                    <button className="btn-save" type="submit">
+                      Create Employee
+                    </button>
                   </div>
-                  <div className="line-form">
-                    <SelectComponent
-                      options={optionsState}
-                      value={selectedValueState}
-                      onChange={handleChangeSelectSta}
-                      htmlFor="state"
-                      labelValue="State"
-                    />
-                  </div>
-                  <div className="line-form">
-                    <label htmlFor="zipcode">Zipcode</label>
-                    <input
-                      type="number"
-                      id="zipcode"
-                      name="zipcode"
-                      value={formData.zipcode}
-                      onChange={handleChange}
-                    />
-                  </div>
-                </div>
-                <div className="info-department-btn-save">
-                  <button className="btn-save" type="submit">
-                    Create Employee
-                  </button>
                 </div>
               </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
+        <Footer />
+        <div className="modalDisplay">
+          <ModalTest
+            onClick={handleCloseModal}
+            isFormSubmitted={isFormSubmitted}
+            isFormCompleted={isFormCompleted}
+            isClickedToClose={isClickedToClose}
+            modalBorder="2px solid black"
+            modalBackground="rgb(168, 168, 168)"
+            choiceOne="Employee created !"
+            choiceOneBackground="rgb(78, 129, 78)"
+            choiceOneColor="white"
+            choiceOneFontSize="36px"
+            choiceTwo="The form is not completed !"
+            choiceTwoBackground="rgb(142, 83, 83)"
+            choiceTwoColor="white"
+            choiceTwoFontSize="36px"
+          />
+        </div>
       </div>
-      <div className="modalDisplay">
-        <Modal
-          isFormSubmitted={isFormSubmitted}
-          onClick={handleCloseModal}
-          isFormCompleted={isFormCompleted}
-          isClickedToClose={isClickedToClose}
-          choiceOne="Employee created !"
-          choiceTwo="The form is not completed !"
-        />
-      </div>
-      <Footer />
-    </div>
+    </>
   );
 }
 

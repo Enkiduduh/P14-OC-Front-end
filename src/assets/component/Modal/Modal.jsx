@@ -1,11 +1,20 @@
 import PropTypes from "prop-types";
 
-function Modal({ isFormSubmitted, isFormCompleted, onClick, isClickedToClose, choiceOne, choiceTwo }) {
+function Modal({
+  isFormSubmitted,
+  isFormCompleted,
+  onClick,
+  isClickedToClose,
+  choiceOne,
+  choiceTwo,
+}) {
   return (
     <>
       {isFormSubmitted ? (
         <>
-          <div className={`${!isClickedToClose ? "modal-container" : "closed"}`}>
+          <div
+            className={`${!isClickedToClose ? "modal-container" : "closed"}`}
+          >
             {isFormCompleted ? (
               <div className="modal-ok">
                 <span>{choiceOne}</span>
@@ -15,7 +24,6 @@ function Modal({ isFormSubmitted, isFormCompleted, onClick, isClickedToClose, ch
                 <span>{choiceTwo}</span>
               </div>
             )}
-
             <div className="modal-close" onClick={onClick}>
               Ok
             </div>
@@ -31,8 +39,8 @@ Modal.propTypes = {
   isFormCompleted: PropTypes.bool.isRequired,
   isClickedToClose: PropTypes.bool.isRequired,
   onClick: PropTypes.func.isRequired,
-  choiceOne:PropTypes.string.isRequired,
-  choiceTwo:PropTypes.string.isRequired,
+  choiceOne: PropTypes.string.isRequired,
+  choiceTwo: PropTypes.string.isRequired,
 };
 
 export default Modal;
