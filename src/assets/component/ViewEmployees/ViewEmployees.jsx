@@ -12,9 +12,10 @@ function ViewEmployees() {
 
   const [employeeData, setEmployeeData] = useState([]);
   const [totalEmployee, setTotalEmployee] = useState([]);
-  const [entriesDisplay, setEntriesDisplay] = useState();
+  const [entriesDisplay, setEntriesDisplay] = useState(10); // Initialisez à 10
   const [isValueLabel2Exists, setIsValueLabel2Exists] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     fetch("src/assets/data/data.json")
@@ -42,14 +43,10 @@ function ViewEmployees() {
     return `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year}`;
   }
 
-  const handleChange = (entriesDisplay) => {
-    const { value } = entriesDisplay.target;
-    const totalDisplay = parseInt(value, 10); // Assurez-vous que 'value' est un entier
-    const newTotalEmployee = [...employeeData, ...employees].slice(
-      0,
-      totalDisplay
-    );
-    setTotalEmployee(newTotalEmployee);
+  const handleChange = (event) => {
+    const { value } = event.target;
+    setEntriesDisplay(parseInt(value, 10)); // Mettez à jour entriesDisplay avec la nouvelle valeur
+    setCurrentPage(1); // Reset to first page on change
   };
 
   const sortAscending = (key) => {
@@ -73,6 +70,7 @@ function ViewEmployees() {
   const handleSearch = (input) => {
     const { value } = input.target;
     setSearchTerm(value);
+    setCurrentPage(1); // Reset to first page on search
   };
 
   const filteredEmployees = totalEmployee.filter((employee) => {
@@ -92,6 +90,25 @@ function ViewEmployees() {
       employee.zipcode.toString().includes(searchTerm.toLowerCase())
     );
   });
+
+  const entriesPerPage = entriesDisplay; // Utilisez entriesDisplay pour définir le nombre d'entrées par page
+  const indexOfLastEmployee = currentPage * entriesPerPage;
+  const indexOfFirstEmployee = indexOfLastEmployee - entriesPerPage;
+  const currentEmployees = filteredEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const nextPage = () => {
+    if (currentPage < Math.ceil(filteredEmployees.length / entriesPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
 
   return (
     <>
@@ -122,6 +139,8 @@ function ViewEmployees() {
         <div className="line"></div>
         <table className="table-container">
           <thead className="thead-line-flex">
+            {/* ... */}
+          </thead><thead className="thead-line-flex">
             <tr>
               <th className="th-flex">
                 <div className="td-head">First Name</div>
@@ -279,7 +298,7 @@ function ViewEmployees() {
             </tr>
           </thead>
           <tbody>
-            {filteredEmployees.map((employee, index) => (
+            {currentEmployees.map((employee, index) => (
               <tr key={index}>
                 <td className="td-width-fixed150">{employee.firstName}</td>
                 <td className="td-width-fixed150">{employee.lastName}</td>
@@ -304,17 +323,26 @@ function ViewEmployees() {
         <div className="showEntryOnEntries-showPages">
           <div className="showEntryOnEntries">
             <div className="showEntry">
-              <span>Showing {totalEmployee.length} entries</span>
+              <span>
+                Showing {indexOfFirstEmployee + 1} to {Math.min(indexOfLastEmployee, filteredEmployees.length)} of {filteredEmployees.length} entries
+              </span>
             </div>
           </div>
           <div className="showPages">
-            <label htmlFor="previous">Previous </label>
-            <button>1</button>
-            <label htmlFor="next"> Next</label>
+            <button onClick={prevPage} disabled={currentPage === 1}>Previous</button>
+            {Array.from({ length: Math.ceil(filteredEmployees.length / entriesPerPage) }, (_, i) => (
+              <button
+                key={i + 1}
+                onClick={() => paginate(i + 1)}
+                className={currentPage === i + 1 ? 'active' : ''}
+              >
+                {i + 1}
+              </button>
+            ))}
+            <button onClick={nextPage} disabled={currentPage === Math.ceil(filteredEmployees.length / entriesPerPage)}>Next</button>
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );

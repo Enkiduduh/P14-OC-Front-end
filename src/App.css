@@ -171,6 +171,10 @@ label {
 .viewEmployeePage-container .td-width-fixed80 {
   width: 80px;
 }
+.viewEmployeePage-container .showPages .active {
+  background-color: #007bff;
+  color: white;
+}
 
 .title {
   height: 17vh;
