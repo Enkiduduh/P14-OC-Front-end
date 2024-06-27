@@ -1,0 +1,71 @@
+.viewEmployeePage-container {
+  width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  .showEntries-searchEntries {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .showEntries,
+    .searchEntries {
+      margin: 10px 41px;
+    }
+  }
+  .showEntryOnEntries-showPages {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    .showEntryOnEntries,
+    .showPages {
+      margin: 10px 41px;
+    }
+  }
+  .thead-line-flex {
+    width: 1100px;
+    .th-flex {
+      background: $primary-color;
+      .td-head {
+        color: white;
+      }
+      .th-img-flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2px;
+        .img-triangle {
+          width: 15px;
+          height: 12px;
+          color: white;
+        }
+      }
+    }
+    .th-fixed-width {
+      width: 50px; // Spécifiez la largeur pour les colonnes spécifiques ici
+    }
+  }
+ 
+  td {
+    text-align: center;
+  }
+  .line {
+    border-bottom: 1px solid black;
+    width: 1150px;
+    margin: 10px 0;
+  }
+  .td-width-fixed190 {
+    width: 190px;
+  }
+  .td-width-fixed150 {
+    width: 150px;
+  }
+  .td-width-fixed100 {
+    width: 100px;
+  }
+  .td-width-fixed80 {
+    width: 80px;
+  }
+}

@@ -1,4 +1,6 @@
-
+.container-cet {
+  position: relative;
+}
 .wrapper-main {
   position: relative;
   display: flex;
@@ -7,7 +9,6 @@
   margin: 0;
   padding: 20px 30px;
   background: $secondary-color;
-  height: 64vh;
   .wrapper-right {
     width: 30%;
     .btn-vce {
@@ -101,5 +102,5 @@ label {
   justify-content: center;
   align-items: center;
   pointer-events: none;
-
+ 
 }

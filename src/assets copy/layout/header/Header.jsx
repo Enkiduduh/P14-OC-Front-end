@@ -6,12 +6,12 @@ function Header() {
       </div>
       <div className="title-right">
         <h3 className="btn-title">
-          <a href="/" target="_self">
+          <a href="/" target="_blank">
             Create Employee Tool
           </a>
         </h3>
         <h3 className="btn-title">
-          <a href="/employees-list" target="_self">
+          <a href="/employees-list" target="_blank">
             View Current Employees
           </a>
         </h3>
@@ -21,4 +21,3 @@ function Header() {
 }
 
 export default Header;
-
