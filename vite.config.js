@@ -13,5 +13,17 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
+  },
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: './index.html',
+        // Assurez-vous que vos fichiers statiques sont inclus ici
+      }
+    }
+  },
+  server: {
+    open: true,
   }
 });
